@@ -29,7 +29,7 @@ spec:
   entryPoints:
   - websecure
   routes:
-  - match: Host(`zerohertz.ddns.net`) && PathPrefix(`/airflow`)
+  - match: Host(`${DDNS}`) && PathPrefix(`/airflow`)
     kind: Rule
     middlewares:
     - name: airflow-forward-auth-mw
@@ -38,7 +38,7 @@ spec:
     - name: airflow-webserver
       port: 8080
   tls:
-    certResolver: zerohertz-resolver
+    certResolver: ${RESOLVER_NAME}
 
 
 # ----------------------- FLOWER ----------------------- #
@@ -62,7 +62,7 @@ spec:
 #   entryPoints:
 #   - web #secure
 #   routes:
-#   - match: Host(`zerohertz.ddns.net`) && PathPrefix(`/flower`)
+#   - match: Host(`${DDNS}`) && PathPrefix(`/flower`)
 #     kind: Rule
 #     middlewares:
 #     - name: airflow-flower-webserver
@@ -70,4 +70,4 @@ spec:
 #     - name: airflow-flower
 #       port: 5555
 #   # tls:
-#   #   certResolver: zerohertz-resolver
+#   #   certResolver: ${RESOLVER_NAME}

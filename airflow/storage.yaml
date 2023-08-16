@@ -16,9 +16,9 @@ spec:
   capacity:
     storage: 1Gi
   accessModes:
-    - ReadOnlyMany
+  - ReadOnlyMany
   hostPath:
-    path: "/home/zerohertz/Zerohertz/airflow/dags"
+    path: "/home/${PATH}/airflow/dags"
   persistentVolumeReclaimPolicy: Retain
 ---
 apiVersion: v1
@@ -30,7 +30,7 @@ metadata:
 spec:
   storageClassName: airflow-storage
   accessModes:
-    - ReadOnlyMany
+  - ReadOnlyMany
   resources:
     requests:
       storage: 1Gi
@@ -49,9 +49,9 @@ spec:
   capacity:
     storage: 10Gi
   accessModes:
-    - ReadWriteMany # https://artifacthub.io/packages/helm/airflow-helm/airflow/8.3.0#how-to-persist-airflow-logs-recommended
+  - ReadWriteMany # https://artifacthub.io/packages/helm/airflow-helm/airflow/8.3.0#how-to-persist-airflow-logs-recommended
   hostPath:
-    path: "/home/zerohertz/Zerohertz/airflow/logs"
+    path: "/home/${PATH}/airflow/logs"
   persistentVolumeReclaimPolicy: Retain
 ---
 apiVersion: v1
@@ -63,7 +63,7 @@ metadata:
 spec:
   storageClassName: airflow-storage
   accessModes:
-    - ReadWriteMany
+  - ReadWriteMany
   resources:
     requests:
       storage: 10Gi
@@ -79,7 +79,7 @@ spec:
 #   accessModes:
 #     - ReadWriteOnce
 #   local:
-#     path: /home/zerohertz/Zerohertz/airflow/dags
+#     path: /home/${PATH}/airflow/dags
 #   nodeAffinity:
 #     required:
 #       nodeSelectorTerms:
@@ -87,4 +87,4 @@ spec:
 #         - key: kubernetes.io/hostname
 #           operator: In
 #           values:
-#           - 0hz
+#           - ${NODE_NAME}

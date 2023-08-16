@@ -39,15 +39,15 @@ webserver:
   defaultUser:
     enabled: true
     role: Admin
-    username: Zerohertz
-    email: ohg3417@gmail.com
+    username: ${USER}
+    email: ${EMAIL}
     firstName: admin
     lastName: user
     password:
 # ----------------------- POSTGRESQL ----------------------- #
 data:
   metadataConnection:
-    user: Zerohertz
+    user: ${USER}
     pass:
     protocol: postgresql
     host: ~
@@ -61,7 +61,7 @@ postgresql:
   auth:
     enablePostgresUser: true
     postgresPassword:
-    username: "Zerohertz"
+    username: "${USER}"
     password:
 # ----------------------- STORAGE ----------------------- #
 # workers:
@@ -90,13 +90,13 @@ postgresql:
 #     path: "/airflow"
 #     pathType: "ImplementationSpecific"
 #     hosts:
-#     - name: "zerohertz.ddns.net"
+#     - name: "${DDNS}"
 #       tls:
 #         enabled: false
 #         secretName: ""
 #     ingressClassName: "traefik"
 # ----------------------- ETC ----------------------- #
-# kubectl label nodes 0hz frequency=0hz
+# kubectl label nodes ${NODE_NAME} frequency=${NODE_NAME}
 
 # nodeSelector:
-#   frequency: "0hz"
+#   frequency: "${NODE_NAME}"

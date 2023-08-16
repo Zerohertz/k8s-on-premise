@@ -2,9 +2,9 @@ ingressClass:
   enabled: true
   isDefaultClass: true
 additionalArguments:
-- "--certificatesresolvers.zerohertz-resolver.acme.email=ohg3417@gmail.com"
-- "--certificatesresolvers.zerohertz-resolver.acme.storage=/data/acme.json"
-- "--certificatesresolvers.zerohertz-resolver.acme.tlschallenge=true"
+- "--certificatesresolvers.${RESOLVER_NAME}.acme.email=${EMAIL}"
+- "--certificatesresolvers.${RESOLVER_NAME}.acme.storage=/data/acme.json"
+- "--certificatesresolvers.${RESOLVER_NAME}.acme.tlschallenge=true"
 ports:
   traefik:
     expose: true
@@ -21,9 +21,9 @@ ports:
 ingressRoute:
   dashboard:
     enabled: true
-    matchRule: Host(`zerohertz.ddns.net`)
+    matchRule: Host(`${DDNS}`)
     entryPoints: ["websecure"]
     middlewares:
     - name: traefik-dashboard-forward-auth-mw
     tls:
-      secretName: zerohertz-resolver
+      secretName: ${RESOLVER_NAME}
