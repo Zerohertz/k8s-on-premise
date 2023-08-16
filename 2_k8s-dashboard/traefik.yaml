@@ -1,0 +1,53 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: kubernetes-dashboard-redirection-mw
+  namespace: kubernetes-dashboard
+spec:
+  redirectRegex:
+    regex: "^https://zerohertz.ddns.net/k8s$$"
+    replacement: "https://zerohertz.ddns.net/k8s/#/"
+    permanent: true
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: kubernetes-dashboard-strip-mw
+  namespace: kubernetes-dashboard
+spec:
+  stripPrefix:
+    prefixes:
+    - "/k8s"
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: kubernetes-dashboard-forward-auth-mw
+  namespace: kubernetes-dashboard
+spec:
+  forwardAuth:
+    address: http://forward-auth.kube-system.svc.cluster.local:4181
+    trustForwardHeader: true
+    authResponseHeaders:
+    - X-Forwarded-User
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: kubernetes-dashboard
+  namespace: kubernetes-dashboard
+spec:
+  entryPoints:
+  - websecure
+  routes:
+  - match: Host(`zerohertz.ddns.net`) && PathPrefix(`/k8s`)
+    kind: Rule
+    middlewares:
+    - name: kubernetes-dashboard-forward-auth-mw
+    - name: kubernetes-dashboard-redirection-mw
+    - name: kubernetes-dashboard-strip-mw
+    services:
+    - name: kubernetes-dashboard
+      port: 80
+  tls:
+    certResolver: zerohertz-resolver
