@@ -1,0 +1,102 @@
+executor: "KubernetesExecutor"
+# podTemplate: |
+# ----------------------- DAGS ----------------------- #
+dags:
+  persistence:
+    annotations: {}
+    enabled: true
+    size: 1Gi
+    storageClassName: airflow-storage
+    accessMode: ReadWriteOnce
+    existingClaim: airflow-local-dags-folder
+    subPath: ~
+# ----------------------- LOGS ----------------------- #
+logs:
+  persistence:
+    enabled: true
+    size: 10Gi
+    annotations: {}
+    storageClassName: airflow-storage
+    existingClaim: airflow-local-logs-folder
+# ----------------------- DAGPROCESSOR ----------------------- #
+dagProcessor:
+  enabled: true
+# ----------------------- WEBSERVER ----------------------- #
+webserver:
+  allowPodLogReading: true
+  livenessProbe:
+    initialDelaySeconds: 15
+    timeoutSeconds: 5
+    failureThreshold: 5
+    periodSeconds: 10
+    scheme: HTTP
+  readinessProbe:
+    initialDelaySeconds: 15
+    timeoutSeconds: 5
+    failureThreshold: 5
+    periodSeconds: 10
+    scheme: HTTP
+  defaultUser:
+    enabled: true
+    role: Admin
+    username: Zerohertz
+    email: ohg3417@gmail.com
+    firstName: admin
+    lastName: user
+    password:
+# ----------------------- POSTGRESQL ----------------------- #
+data:
+  metadataConnection:
+    user: Zerohertz
+    pass:
+    protocol: postgresql
+    host: ~
+    port: 5432
+    db: postgres
+    sslmode: disable
+postgresql:
+  enabled: true
+  image:
+    tag: "11"
+  auth:
+    enablePostgresUser: true
+    postgresPassword:
+    username: "Zerohertz"
+    password:
+# ----------------------- STORAGE ----------------------- #
+# workers:
+#   persistence:
+#     enabled: true
+#     size: 10Gi
+#     storageClassName: local-path
+#     fixPermissions: true
+# triggerer:
+#   persistence:
+#     enabled: true
+#     size: 10Gi
+#     storageClassName: local-path
+#     fixPermissions: true
+# redis:
+#   persistence:
+#     enabled: true
+#     size: 1Gi
+#     storageClassName: local-path
+# ----------------------- INGRESS ----------------------- #
+# ingress:
+#   enabled: ~
+#   web:
+#     enabled: true
+#     annotations: {}
+#     path: "/airflow"
+#     pathType: "ImplementationSpecific"
+#     hosts:
+#     - name: "zerohertz.ddns.net"
+#       tls:
+#         enabled: false
+#         secretName: ""
+#     ingressClassName: "traefik"
+# ----------------------- ETC ----------------------- #
+# kubectl label nodes 0hz frequency=0hz
+
+# nodeSelector:
+#   frequency: "0hz"

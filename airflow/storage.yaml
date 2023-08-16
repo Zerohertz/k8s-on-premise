@@ -1,0 +1,90 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: airflow-storage
+provisioner: kubernetes.io/no-provisioner
+volumeBindingMode: WaitForFirstConsumer
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: airflow-local-dags-pv
+  labels:
+    type: airflow-dags
+spec:
+  storageClassName: airflow-storage
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadOnlyMany
+  hostPath:
+    path: "/home/zerohertz/Zerohertz/airflow/dags"
+  persistentVolumeReclaimPolicy: Retain
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: airflow-local-dags-folder
+  namespace: airflow
+  annotations: {}
+spec:
+  storageClassName: airflow-storage
+  accessModes:
+    - ReadOnlyMany
+  resources:
+    requests:
+      storage: 1Gi
+  selector:
+    matchLabels:
+      type: airflow-dags
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: airflow-local-logs-pv
+  labels:
+    type: airflow-logs
+spec:
+  storageClassName: airflow-storage
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteMany # https://artifacthub.io/packages/helm/airflow-helm/airflow/8.3.0#how-to-persist-airflow-logs-recommended
+  hostPath:
+    path: "/home/zerohertz/Zerohertz/airflow/logs"
+  persistentVolumeReclaimPolicy: Retain
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: airflow-local-logs-folder
+  namespace: airflow
+  annotations: {}
+spec:
+  storageClassName: airflow-storage
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 10Gi
+  selector:
+    matchLabels:
+      type: airflow-logs
+
+# ----------------------- PVC EXAMPLE ----------------------- #
+# spec:
+#   storageClassName: airflow-storage
+#   capacity:
+#     storage: 1Gi
+#   accessModes:
+#     - ReadWriteOnce
+#   local:
+#     path: /home/zerohertz/Zerohertz/airflow/dags
+#   nodeAffinity:
+#     required:
+#       nodeSelectorTerms:
+#       - matchExpressions:
+#         - key: kubernetes.io/hostname
+#           operator: In
+#           values:
+#           - 0hz
