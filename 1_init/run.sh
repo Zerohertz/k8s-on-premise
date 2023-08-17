@@ -24,8 +24,11 @@ kubectl apply -f metallb.yaml
 # helm repo update
 helm uninstall traefik -n kube-system
 helm install traefik traefik/traefik -f traefik-values.yaml -n kube-system
-kubectl apply -f traefik-oauth.yaml
 # helm uninstall traefik -n kube-system
+
+# ---------------------------- OAUTH ---------------------------- #
+kubectl create namespace oauth
+kubectl apply -f oauth.yaml
 
 # ---------------------------- NGINX ---------------------------- #
 # helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx

@@ -28,9 +28,6 @@ spec:
       containers:
       - name: prometheus
         image: prom/prometheus
-        args:
-        - "--config.file=/etc/prometheus/prometheus.yml"
-        - "--web.external-url=https://${DDNS}/prometheus"
         ports:
         - containerPort: 9090
         volumeMounts:
@@ -65,7 +62,7 @@ metadata:
   namespace: monitoring
 spec:
   forwardAuth:
-    address: http://forward-auth.kube-system.svc.cluster.local:4181
+    address: http://forward-auth.oauth.svc.cluster.local:4181
     trustForwardHeader: true
     authResponseHeaders:
     - X-Forwarded-User
@@ -79,7 +76,7 @@ spec:
   entryPoints:
   - websecure
   routes:
-  - match: Host(`${DDNS}`) && PathPrefix(`/prometheus`)
+  - match: Host(`prometheus.${DDNS}`)
     kind: Rule
     middlewares:
     - name: prometheus-forward-auth-mw
@@ -87,4 +84,4 @@ spec:
     - name: prometheus
       port: 9090
   tls:
-    certResolver: ${RESOLVER_NAME}
+    certResolver: ${RESOLVER}

@@ -5,20 +5,10 @@ metadata:
   namespace: airflow
 spec:
   forwardAuth:
-    address: http://forward-auth.kube-system.svc.cluster.local:4181
+    address: http://forward-auth.oauth.svc.cluster.local:4181
     trustForwardHeader: true
     authResponseHeaders:
     - X-Forwarded-User
----
-apiVersion: traefik.containo.us/v1alpha1
-kind: Middleware
-metadata:
-  name: airflow-strip-mw
-  namespace: airflow
-spec:
-  stripPrefix:
-    prefixes:
-    - "/airflow"
 ---
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
@@ -29,45 +19,12 @@ spec:
   entryPoints:
   - websecure
   routes:
-  - match: Host(`${DDNS}`) && PathPrefix(`/airflow`)
+  - match: Host(`airflow.${DDNS}`)
     kind: Rule
     middlewares:
     - name: airflow-forward-auth-mw
-    - name: airflow-strip-mw
     services:
     - name: airflow-webserver
       port: 8080
   tls:
-    certResolver: ${RESOLVER_NAME}
-
-
-# ----------------------- FLOWER ----------------------- #
-# ---
-# apiVersion: traefik.containo.us/v1alpha1
-# kind: Middleware
-# metadata:
-#   name: airflow-flower-webserver
-#   namespace: airflow
-# spec:
-#   stripPrefix:
-#     prefixes:
-#     - "/flower"
-# ---
-# apiVersion: traefik.containo.us/v1alpha1
-# kind: IngressRoute
-# metadata:
-#   name: airflow-flower-webserver
-#   namespace: airflow
-# spec:
-#   entryPoints:
-#   - web #secure
-#   routes:
-#   - match: Host(`${DDNS}`) && PathPrefix(`/flower`)
-#     kind: Rule
-#     middlewares:
-#     - name: airflow-flower-webserver
-#     services:
-#     - name: airflow-flower
-#       port: 5555
-#   # tls:
-#   #   certResolver: ${RESOLVER_NAME}
+    certResolver: ${RESOLVER}

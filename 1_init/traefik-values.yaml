@@ -2,9 +2,9 @@ ingressClass:
   enabled: true
   isDefaultClass: true
 additionalArguments:
-- "--certificatesresolvers.${RESOLVER_NAME}.acme.email=${EMAIL}"
-- "--certificatesresolvers.${RESOLVER_NAME}.acme.storage=/data/acme.json"
-- "--certificatesresolvers.${RESOLVER_NAME}.acme.tlschallenge=true"
+- "--certificatesresolvers.${RESOLVER}.acme.email=${EMAIL}"
+- "--certificatesresolvers.${RESOLVER}.acme.storage=/data/acme.json"
+- "--certificatesresolvers.${RESOLVER}.acme.tlschallenge=true"
 ports:
   traefik:
     expose: true
@@ -20,10 +20,4 @@ ports:
     nodePort: 31026
 ingressRoute:
   dashboard:
-    enabled: true
-    matchRule: Host(`${DDNS}`)
-    entryPoints: ["websecure"]
-    middlewares:
-    - name: traefik-dashboard-forward-auth-mw
-    tls:
-      secretName: ${RESOLVER_NAME}
+    enabled: false

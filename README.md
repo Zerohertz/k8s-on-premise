@@ -14,11 +14,10 @@
 
 </div>
 
-+ `Traefik`을 제외한 모든 서비스는 `https://${DDNS}/${SERVICE}`에 배포됩니다.
-+ `Traefik`의 dashboard는 `https://${DDNS}`에 배포되어 `https://${DDNS}/dashboard`로 redirection됩니다.
++ 모든 서비스는 `https://${SERVICE}.${DDNS}`에 배포됩니다.
 
 <div align="center">
-  <img width="653" alt="스크린샷 2023-08-16 오후 8 44 36" src="https://github.com/Zerohertz/k8s-on-premise/assets/42334717/7727dec2-6c93-4c9f-8b13-c0ae22bd44fa">
+  <img width="653" alt="traefik" src="https://github-production-user-asset-6210df.s3.amazonaws.com/42334717/261211480-62921af7-4f6b-4121-914b-a9d6d82ca66a.png">
 </div>
 
 ---

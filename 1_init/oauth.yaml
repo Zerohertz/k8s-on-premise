@@ -2,7 +2,7 @@ kind: Secret
 apiVersion: v1
 metadata:
   name: traefik-forward-auth-secrets
-  namespace: kube-system
+  namespace: oauth
   labels:
     name: traefik
 type: Opaque
@@ -10,8 +10,11 @@ data:
   PROVIDERS_GOOGLE_CLIENT_ID:
   PROVIDERS_GOOGLE_CLIENT_SECRET:
   SECRET:
-  DDNS:
+  # auth.${DDNS}
+  AUTH_HOST:
+  # /_oauth
   URL_PATH:
+  # ${EMAIL},${EMAIL},...
   WHITELIST:
 ---
 apiVersion: apps/v1
@@ -20,7 +23,7 @@ metadata:
   labels:
     app: forward-auth
   name: forward-auth
-  namespace: kube-system
+  namespace: oauth
 spec:
   replicas: 1
   selector:
@@ -51,16 +54,11 @@ spec:
             secretKeyRef:
               name: traefik-forward-auth-secrets
               key: SECRET
-        - name: COOKIE_DOMAIN
-          valueFrom:
-            secretKeyRef:
-              name: traefik-forward-auth-secrets
-              key: DDNS
         - name: AUTH_HOST
           valueFrom:
             secretKeyRef:
               name: traefik-forward-auth-secrets
-              key: DDNS
+              key: AUTH_HOST
         - name: INSECURE_COOKIE
           value: "false"
         - name: URL_PATH
@@ -82,7 +80,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: forward-auth
-  namespace: kube-system
+  namespace: oauth
   labels:
     app: traefik
 spec:
@@ -95,13 +93,18 @@ spec:
     targetPort: 4181
 ---
 apiVersion: traefik.containo.us/v1alpha1
-kind: Middleware
+kind: IngressRoute
 metadata:
-  name: traefik-dashboard-forward-auth-mw
-  namespace: kube-system
+  name: auth-ingress-route
+  namespace: oauth
 spec:
-  forwardAuth:
-    address: http://forward-auth.kube-system.svc.cluster.local:4181
-    trustForwardHeader: true
-    authResponseHeaders:
-    - X-Forwarded-User
+  entryPoints:
+  - websecure
+  routes:
+  - match: Host(`auth.${DDNS}`)
+    kind: Rule
+    services:
+    - name: forward-auth
+      port: 4181
+  tls:
+    certResolver: ${RESOLVER}

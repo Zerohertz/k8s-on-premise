@@ -1,8 +1,8 @@
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
 metadata:
-  name: kubernetes-dashboard-forward-auth-mw
-  namespace: kubernetes-dashboard
+  name: traefik-dashboard-forward-auth-mw
+  namespace: traefik-dashboard
 spec:
   forwardAuth:
     address: http://forward-auth.oauth.svc.cluster.local:4181
@@ -13,18 +13,18 @@ spec:
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
-  name: kubernetes-dashboard
-  namespace: kubernetes-dashboard
+  name: traefik-dashboard
+  namespace: traefik-dashboard
 spec:
   entryPoints:
   - websecure
   routes:
-  - match: Host(`k8s.${DDNS}`)
+  - match: Host(`traefik.${DDNS}`)
     kind: Rule
     middlewares:
-    - name: kubernetes-dashboard-forward-auth-mw
+    - name: traefik-dashboard-forward-auth-mw
     services:
-    - name: kubernetes-dashboard
-      port: 80
+    - name: api@internal
+      kind: TraefikService
   tls:
     certResolver: ${RESOLVER}

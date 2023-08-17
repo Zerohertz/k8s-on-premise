@@ -73,20 +73,10 @@ metadata:
   namespace: monitoring
 spec:
   forwardAuth:
-    address: http://forward-auth.kube-system.svc.cluster.local:4181
+    address: http://forward-auth.oauth.svc.cluster.local:4181
     trustForwardHeader: true
     authResponseHeaders:
     - X-Forwarded-User
----
-apiVersion: traefik.containo.us/v1alpha1
-kind: Middleware
-metadata:
-  name: grafana-strip-mw
-  namespace: monitoring
-spec:
-  stripPrefix:
-    prefixes:
-    - "/grafana"
 ---
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
@@ -97,13 +87,12 @@ spec:
   entryPoints:
   - websecure
   routes:
-  - match: Host(`${DDNS}`) && PathPrefix(`/grafana`)
+  - match: Host(`grafana.${DDNS}`)
     kind: Rule
     middlewares:
     - name: grafana-forward-auth-mw
-    - name: grafana-strip-mw
     services:
     - name: grafana
       port: 3000
   tls:
-    certResolver: ${RESOLVER_NAME}
+    certResolver: ${RESOLVER}
