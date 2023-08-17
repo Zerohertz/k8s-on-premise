@@ -7,7 +7,7 @@ kubectl apply -f local-path.yaml
 
 # ---------------------------- METALLB ---------------------------- #
 # https://metallb.universe.tf/installation/
-kubectl delete ns metallb-system
+kubectl delete namespace metallb-system
 kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.13.10/config/manifests/metallb-native.yaml
 kubectl get configmap kube-proxy -n kube-system -o yaml | \
 sed -e "s/strictARP: false/strictARP: true/" | \
@@ -30,5 +30,5 @@ kubectl apply -f traefik-oauth.yaml
 # ---------------------------- NGINX ---------------------------- #
 # helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
 # helm repo update
-# kubectl create ns nginx
+# kubectl create namespace nginx
 # helm install my-nginx ingress-nginx/ingress-nginx -n nginx

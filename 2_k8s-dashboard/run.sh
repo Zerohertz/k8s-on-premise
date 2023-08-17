@@ -1,6 +1,6 @@
 # ---------------------------- K8S DASHBOARD ---------------------------- #
-kubectl delete ns kubernetes-dashboard
-kubectl create ns kubernetes-dashboard
+kubectl delete namespace kubernetes-dashboard
+kubectl create namespace kubernetes-dashboard
 
 # wget https://raw.githubusercontent.com/kubernetes/dashboard/v2.6.1/aio/deploy/recommended.yaml
 kubectl apply -f k8s-dashboard.yaml
