@@ -62,7 +62,7 @@ metadata:
   namespace: monitoring
 spec:
   forwardAuth:
-    address: http://forward-auth.oauth.svc.cluster.local:4181
+    address: https://forward-auth.oauth.svc.cluster.local:4181
     trustForwardHeader: true
     authResponseHeaders:
     - X-Forwarded-User
