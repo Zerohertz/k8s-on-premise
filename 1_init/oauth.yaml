@@ -7,14 +7,17 @@ metadata:
     name: traefik
 type: Opaque
 data:
+  #
   PROVIDERS_GOOGLE_CLIENT_ID:
+  #
   PROVIDERS_GOOGLE_CLIENT_SECRET:
+  #
   SECRET:
   # auth.${DDNS}
   AUTH_HOST:
   # /_oauth
   URL_PATH:
-  # ${EMAIL},${EMAIL},...
+  # ${EMAIL}
   WHITELIST:
 ---
 apiVersion: apps/v1

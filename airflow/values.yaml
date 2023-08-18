@@ -43,12 +43,12 @@ webserver:
     email: ${EMAIL}
     firstName: admin
     lastName: user
-    password:
+    password: "${PASSWORD}"
 # ----------------------- POSTGRESQL ----------------------- #
 data:
   metadataConnection:
     user: ${USER}
-    pass:
+    pass: "${PASSWORD}"
     protocol: postgresql
     host: ~
     port: 5432
@@ -60,9 +60,9 @@ postgresql:
     tag: "11"
   auth:
     enablePostgresUser: true
-    postgresPassword:
+    postgresPassword: "${PASSWORD}"
     username: "${USER}"
-    password:
+    password: "${PASSWORD}"
 # ----------------------- STORAGE ----------------------- #
 # workers:
 #   persistence:
@@ -96,7 +96,7 @@ postgresql:
 #         secretName: ""
 #     ingressClassName: "traefik"
 # ----------------------- ETC ----------------------- #
-# kubectl label nodes ${NODE_NAME} frequency=${NODE_NAME}
+# kubectl label nodes ${NODE} frequency=${NODE}
 
 # nodeSelector:
-#   frequency: "${NODE_NAME}"
+#   frequency: "${NODE}"

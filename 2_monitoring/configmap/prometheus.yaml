@@ -2,7 +2,7 @@ global:
   scrape_interval: 5s
   evaluation_interval: 5s
 scrape_configs:
-- job_name: 'prometheus'
+- job_name: 'PROMETHEUS'
   static_configs:
   - targets: ['localhost:9090']
 - job_name: 'TRAEFIK'
@@ -11,7 +11,9 @@ scrape_configs:
 - job_name: 'NODE_EXPORTER'
   static_configs:
   - targets: ['192.168.219.200:9101']
-
+- job_name: 'AIRFLOW_STATSD'
+  static_configs:
+  - targets: ['airflow-statsd.airflow.svc.cluster.local:9102']
 
 # [Unit]
 # Description=Node Exporter
