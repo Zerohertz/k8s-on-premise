@@ -5,7 +5,7 @@ metadata:
   namespace: kubernetes-dashboard
 spec:
   forwardAuth:
-    address: https://forward-auth.oauth.svc.cluster.local:4181
+    address: http://forward-auth.oauth.svc.cluster.local:4181
     trustForwardHeader: true
     authResponseHeaders:
     - X-Forwarded-User

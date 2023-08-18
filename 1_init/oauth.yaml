@@ -99,12 +99,10 @@ metadata:
   namespace: oauth
 spec:
   entryPoints:
-  - websecure
+  - web
   routes:
   - match: Host(`auth.${DDNS}`)
     kind: Rule
     services:
     - name: forward-auth
       port: 4181
-  tls:
-    certResolver: ${RESOLVER}
