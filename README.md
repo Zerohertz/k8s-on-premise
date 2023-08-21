@@ -20,7 +20,7 @@
 |:three:|[airflow/run.sh](https://github.com/Zerohertz/k8s-on-premise/blob/master/airflow/run.sh)|:o: [Apache Airflow](https://github.com/apache/airflow)|:white_check_mark: [Kubernetes Executor](https://airflow.apache.org/docs/apache-airflow/stable/core-concepts/executor/kubernetes.html) 사용|
 |:three:|[argo-cd/run.sh](https://github.com/Zerohertz/k8s-on-premise/blob/master/argo-cd/run.sh)|:o: [Argo CD](https://github.com/argoproj/argo-cd)||
 |:three:|To Be Continue...|:o: [Nextcloud](https://github.com/nextcloud)||
-|:art:|[panel/build.sh](https://github.com/Zerohertz/k8s-on-premise/blob/master/panel/build.sh)</br>[panel/run.sh](https://github.com/Zerohertz/k8s-on-premise/blob/master/panel/run.sh)|:o: [@rldnd](https://github.com/rldnd)|:white_check_mark: 모든 서비스를 한번에 접속할 수 있는 panel 추가|
+|:art:|[portal/build.sh](https://github.com/Zerohertz/k8s-on-premise/blob/master/portal/build.sh)</br>[portal/run.sh](https://github.com/Zerohertz/k8s-on-premise/blob/master/portal/run.sh)|:o: [@rldnd](https://github.com/rldnd)|:white_check_mark: 모든 서비스를 한번에 접속할 수 있는 portal 추가|
 
 </div>
 
@@ -28,7 +28,7 @@
 
 
 <div align="center">
-  <img width="2163" alt="panel" src="https://github-production-user-asset-6210df.s3.amazonaws.com/42334717/262010647-c873b57a-95cb-4a57-ac44-6116b8d3c265.png">
+  <img width="2163" alt="portal" src="https://github-production-user-asset-6210df.s3.amazonaws.com/42334717/262010647-c873b57a-95cb-4a57-ac44-6116b8d3c265.png">
   <img width="519" alt="traefik" src="https://github-production-user-asset-6210df.s3.amazonaws.com/42334717/262011380-51d6f3a0-6b2c-42c3-b72e-7d68b563314a.png">
 </div>
 
