@@ -1,0 +1,52 @@
+/* stylelint-disable selector-class-pattern */
+/* stylelint-disable keyframes-name-pattern */
+@keyframes react-loading-skeleton {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.react-loading-skeleton {
+  --base-color: #f1f1f3;
+  --highlight-color: #b9b9b9;
+  --animation-duration: 1.5s;
+  --animation-direction: normal;
+  --pseudo-element-display: block; /* Enable animation */
+  position: relative;
+  z-index: 1; /* Necessary for overflow: hidden to work correctly in Safari */
+  display: inline-flex;
+  width: 100%;
+  overflow: hidden;
+  line-height: 1;
+  user-select: none;
+  background-color: var(--base-color);
+  border-radius: 0.25rem;
+
+  & + br {
+    display: none; /* Remove extra line breaks */
+  }
+}
+
+.react-loading-skeleton::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  display: var(--pseudo-element-display);
+  height: 100%;
+  content: " ";
+  background-image: linear-gradient(90deg, var(--base-color), var(--highlight-color), var(--base-color));
+  background-repeat: no-repeat;
+  transform: translateX(-100%);
+  animation-name: react-loading-skeleton;
+  animation-duration: var(--animation-duration);
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-direction: var(--animation-direction);
+}
+
+// @media (prefers-reduced-motion) {
+//   .react-loading-skeleton {
+//     --pseudo-element-display: none; /* Disable animation */
+//   }
+// }
