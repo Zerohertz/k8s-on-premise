@@ -1,0 +1,27 @@
+@use "src/styles/constants" as c;
+@use "src/styles/mixins" as m;
+
+.wrapper {
+  width: 100%;
+  padding: c.$S_PAGE_HORIZONTAL_PADDING;
+  padding-bottom: 40px;
+
+  .imageWrapper {
+    position: relative;
+    width: 60%;
+    max-width: 1000px;
+    aspect-ratio: 7/2;
+    margin: 0 auto;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    @include m.mobileOnly {
+      width: 100%;
+      margin: 0;
+    }
+  }
+}

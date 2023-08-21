@@ -1,0 +1,42 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: panel-pod
+  namespace: panel
+  labels:
+    app: panel
+spec:
+  containers:
+  - name: panel-container
+    image: panel:v1
+    ports:
+    - containerPort: 3000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: panel-service
+  namespace: panel
+spec:
+  selector:
+    app: panel
+  ports:
+    - protocol: TCP
+      port: 3000
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: panel
+  namespace: panel
+spec:
+  entryPoints:
+  - websecure
+  routes:
+  - match: Host(`${DDNS}`)
+    kind: Rule
+    services:
+    - name: panel-service
+      port: 3000
+  tls:
+    certResolver: ${RESOLVER}

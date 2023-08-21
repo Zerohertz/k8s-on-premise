@@ -1,16 +1,24 @@
-FROM node:14 AS builder
-WORKDIR /app
-COPY ./ .
+# Builder stage
+FROM node:18 as builder
 
-RUN npm install
-RUN npm run build
-
-FROM node:14
 WORKDIR /app
-COPY --from=builder /app/package.json /app/package-lock.json ./
-RUN npm install --production
+
+COPY package.json ./
+RUN yarn install
+RUN yarn add sharp
+
+COPY . ./
+
+RUN yarn run build
+
+FROM node:18
+
+WORKDIR /app
+
+COPY --from=builder /app/package.json ./
+COPY --from=builder /app/yarn.lock ./
 COPY --from=builder /app/.next ./.next
 COPY --from=builder /app/public ./public
+COPY --from=builder /app/node_modules ./node_modules
 
-EXPOSE 3000
-CMD ["npm", "start"]
+CMD ["yarn", "start"]
