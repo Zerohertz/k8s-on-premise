@@ -2,6 +2,13 @@
 
 > Kubernetes를 직접 구축해보고 서비스를 배포해보기 위한 코드들입니다.
 
+</br>
+<div align = "center">
+    <a href = "https://zerohertz.xyz">
+        <img src="https://img.shields.io/badge/Zerohertz's%20Server-800a0a?style=for-the-badge&logo=data.ai&logoColor=white"/>
+    </a>
+</div>
+</br>
 <div align="center">
 
 |No.|`.sh`|Stacks|Features|
@@ -12,13 +19,17 @@
 |:two:|[2_monitoring/run.sh](https://github.com/Zerohertz/k8s-on-premise/blob/master/2_monitoring/run.sh)|:o: [Prometheus](https://github.com/prometheus/prometheus)</br>:o: [Grafana](https://github.com/grafana/grafana)|:white_check_mark: [Node Exporter Full](https://grafana.com/grafana/dashboards/1860-node-exporter-full/), [Traefik Official Kubernetes Dashboard](https://grafana.com/grafana/dashboards/17347-traefik-official-kubernetes-dashboard/) 사용 가능|
 |:three:|[airflow/run.sh](https://github.com/Zerohertz/k8s-on-premise/blob/master/airflow/run.sh)|:o: [Apache Airflow](https://github.com/apache/airflow)|:white_check_mark: [Kubernetes Executor](https://airflow.apache.org/docs/apache-airflow/stable/core-concepts/executor/kubernetes.html) 사용|
 |:three:|[argo-cd/run.sh](https://github.com/Zerohertz/k8s-on-premise/blob/master/argo-cd/run.sh)|:o: [Argo CD](https://github.com/argoproj/argo-cd)||
+|:three:|To Be Continue...|:o: [Nextcloud](https://github.com/nextcloud)||
+|:art:|[panel/build.sh](https://github.com/Zerohertz/k8s-on-premise/blob/master/panel/build.sh)</br>[panel/run.sh](https://github.com/Zerohertz/k8s-on-premise/blob/master/panel/run.sh)|:o: [@rldnd](https://github.com/rldnd)|:white_check_mark: 모든 서비스를 한번에 접속할 수 있는 panel 추가|
 
 </div>
 
 + 모든 서비스는 `https://${SERVICE}.${DDNS}`에 배포됩니다.
 
+
 <div align="center">
-  <img width="653" alt="traefik" src="https://github-production-user-asset-6210df.s3.amazonaws.com/42334717/261211480-62921af7-4f6b-4121-914b-a9d6d82ca66a.png">
+  <img width="2163" alt="panel" src="https://github-production-user-asset-6210df.s3.amazonaws.com/42334717/262010647-c873b57a-95cb-4a57-ac44-6116b8d3c265.png">
+  <img width="519" alt="traefik" src="https://github-production-user-asset-6210df.s3.amazonaws.com/42334717/262011380-51d6f3a0-6b2c-42c3-b72e-7d68b563314a.png">
 </div>
 
 ---
