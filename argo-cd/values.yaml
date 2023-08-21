@@ -1,0 +1,9 @@
+# sudo apt-get install apache2-utils
+# htpasswd -nbBC 10 "" ${PASSWORD} | tr -d ':\n' | sed 's/$2y/$2a/'
+
+configs:
+  params:
+    server.insecure: true
+  secret:
+    argocdServerAdminPassword: "${PASSWORD}"
+
