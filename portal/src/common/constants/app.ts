@@ -2,6 +2,11 @@ import type { AppInterface } from "@/common/types/app";
 
 export const APP_LIST: AppInterface[] = [
   {
+    name: "GitHub",
+    href: "https://github.com/${USER}",
+    imageSrc: "/images/github.png",
+  },
+  {
     name: "Blog",
     href: "https://zerohertz.github.io",
     imageSrc: "/images/blog.png",
