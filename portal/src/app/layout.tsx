@@ -33,6 +33,9 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ko">
+      <head>
+        <meta property="og:image" content="https://github-production-user-asset-6210df.s3.amazonaws.com/42334717/262034192-07b0b7f3-aa70-4841-866d-75eec1063df1.png" />
+      </head>
       <body className={suit.className}>
         <NextTopLoader showSpinner={false} height={4} color="#800a0a" crawl />
         <div className={styles.wrapper} id="layout-content">
