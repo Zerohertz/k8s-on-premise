@@ -1,4 +1,4 @@
-# ---------------------------- AIRFLOW ---------------------------- #
+# ---------------------------- NEXTCLOUD ---------------------------- #
 kubectl create namespace nextcloud
 kubectl apply -f storage.yaml
 
