@@ -19,7 +19,7 @@
 |:two:|[2_monitoring/run.sh](https://github.com/Zerohertz/k8s-on-premise/blob/master/2_monitoring/run.sh)|:o: [Prometheus](https://github.com/prometheus/prometheus)</br>:o: [Grafana](https://github.com/grafana/grafana)|:white_check_mark: [Node Exporter Full](https://grafana.com/grafana/dashboards/1860-node-exporter-full/), [Traefik Official Kubernetes Dashboard](https://grafana.com/grafana/dashboards/17347-traefik-official-kubernetes-dashboard/) 사용 가능|
 |:three:|[airflow/run.sh](https://github.com/Zerohertz/k8s-on-premise/blob/master/airflow/run.sh)|:o: [Apache Airflow](https://github.com/apache/airflow)|:white_check_mark: [Kubernetes Executor](https://airflow.apache.org/docs/apache-airflow/stable/core-concepts/executor/kubernetes.html) 사용|
 |:three:|[argo-cd/run.sh](https://github.com/Zerohertz/k8s-on-premise/blob/master/argo-cd/run.sh)|:o: [Argo CD](https://github.com/argoproj/argo-cd)||
-|:three:|To Be Continue...|:o: [Nextcloud](https://github.com/nextcloud)||
+|:three:|[nextcloud/run.sh](https://github.com/Zerohertz/k8s-on-premise/blob/master/nextcloud/run.sh)|:o: [Nextcloud](https://github.com/nextcloud)||
 |:art:|[portal/build.sh](https://github.com/Zerohertz/k8s-on-premise/blob/master/portal/build.sh)</br>[portal/run.sh](https://github.com/Zerohertz/k8s-on-premise/blob/master/portal/run.sh)|:o: [@rldnd](https://github.com/rldnd)|:white_check_mark: 모든 서비스를 한번에 접속할 수 있는 portal 추가|
 
 </div>

@@ -1,0 +1,16 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: nextcloud
+  namespace: nextcloud
+spec:
+  entryPoints:
+  - websecure
+  routes:
+  - match: Host(`cloud.${DDNS}`)
+    kind: Rule
+    services:
+    - name: nextcloud
+      port: 8080
+  tls:
+    certResolver: ${RESOLVER}

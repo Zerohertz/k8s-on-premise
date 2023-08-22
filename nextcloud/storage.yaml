@@ -1,0 +1,61 @@
+# /${PATH}/nextcloud
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: nextcloud-storage
+provisioner: kubernetes.io/no-provisioner
+volumeBindingMode: WaitForFirstConsumer
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: nextcloud-pv
+spec:
+  storageClassName: nextcloud
+  accessModes:
+    - ReadWriteOnce
+  capacity:
+    storage: 10Gi
+  hostPath:
+    path: "/${PATH}/nextcloud/etc"
+  persistentVolumeReclaimPolicy: Retain
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: nextcloud-data-pv
+spec:
+  storageClassName: nextcloud
+  accessModes:
+    - ReadWriteOnce
+  capacity:
+    storage: 600Gi
+  hostPath:
+    path: "/${PATH}/nextcloud/data"
+  persistentVolumeReclaimPolicy: Retain
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: nextcloud-pvc
+  namespace: nextcloud
+spec:
+  storageClassName: nextcloud
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: nextcloud-data-pvc
+  namespace: nextcloud
+spec:
+  storageClassName: nextcloud
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 600Gi
