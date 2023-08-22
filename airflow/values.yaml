@@ -22,6 +22,7 @@ logs:
 dagProcessor:
   enabled: true
 # ----------------------- WEBSERVER ----------------------- #
+# webserverSecretKeySecretName: airflow-webserver-secret-key
 webserver:
   allowPodLogReading: true
   livenessProbe:
