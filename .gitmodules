@@ -1,0 +1,3 @@
+[submodule "portal"]
+	path = portal
+	url = https://github.com/Zerohertz/server-portal
