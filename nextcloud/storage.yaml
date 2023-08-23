@@ -11,13 +11,13 @@ kind: PersistentVolume
 metadata:
   name: nextcloud-pv
 spec:
-  storageClassName: nextcloud
+  storageClassName: nextcloud-storage
   accessModes:
     - ReadWriteOnce
   capacity:
     storage: 10Gi
   hostPath:
-    path: "/${PATH}/nextcloud/etc"
+    path: "/mnt/nextcloud/etc"
   persistentVolumeReclaimPolicy: Retain
 ---
 apiVersion: v1
@@ -25,13 +25,13 @@ kind: PersistentVolume
 metadata:
   name: nextcloud-data-pv
 spec:
-  storageClassName: nextcloud
+  storageClassName: nextcloud-storage
   accessModes:
     - ReadWriteOnce
   capacity:
     storage: 600Gi
   hostPath:
-    path: "/${PATH}/nextcloud/data"
+    path: "/mnt/nextcloud"
   persistentVolumeReclaimPolicy: Retain
 ---
 apiVersion: v1
@@ -40,7 +40,7 @@ metadata:
   name: nextcloud-pvc
   namespace: nextcloud
 spec:
-  storageClassName: nextcloud
+  storageClassName: nextcloud-storage
   accessModes:
     - ReadWriteOnce
   resources:
@@ -53,7 +53,7 @@ metadata:
   name: nextcloud-data-pvc
   namespace: nextcloud
 spec:
-  storageClassName: nextcloud
+  storageClassName: nextcloud-storage
   accessModes:
     - ReadWriteOnce
   resources:
