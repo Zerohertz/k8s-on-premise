@@ -20,7 +20,7 @@
 |:three:|[airflow/run.sh](https://github.com/Zerohertz/k8s-on-premise/blob/master/airflow/run.sh)|:o: [Apache Airflow](https://github.com/apache/airflow)|:white_check_mark: [Kubernetes Executor](https://airflow.apache.org/docs/apache-airflow/stable/core-concepts/executor/kubernetes.html) 사용|
 |:three:|[argo-cd/run.sh](https://github.com/Zerohertz/k8s-on-premise/blob/master/argo-cd/run.sh)|:o: [Argo CD](https://github.com/argoproj/argo-cd)||
 |:three:|[nextcloud/run.sh](https://github.com/Zerohertz/k8s-on-premise/blob/master/nextcloud/run.sh)|:o: [Nextcloud](https://github.com/nextcloud)||
-|:art:|[portal/build.sh](https://github.com/Zerohertz/k8s-on-premise/blob/master/portal/build.sh)</br>[portal/run.sh](https://github.com/Zerohertz/k8s-on-premise/blob/master/portal/run.sh)|:o: [@rldnd](https://github.com/rldnd)|:white_check_mark: 모든 서비스를 한번에 접속할 수 있는 portal 추가|
+|:art:|-|:o: [@rldnd](https://github.com/rldnd)|:white_check_mark: 모든 서비스를 한번에 접속할 수 있는 portal 추가</br>:white_check_mark: [GitHub Actions 및 Argo CD 기반 CI/CD 적용](https://zerohertz.github.io/cicd-init/)|
 
 </div>
 
