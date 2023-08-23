@@ -10,17 +10,6 @@ nextcloud:
 phpClientHttpsFix:
   enabled: true
   protocol: https
-postgresql:
-  enabled: true
-  global:
-    postgresql:
-      auth:
-        username: ${USER}
-        password: "${PASSWORD}"
-        database: nextcloud
-  primary:
-    persistence:
-      enabled: true
 persistence:
   enabled: true
   storageClass: nextcloud-storage
