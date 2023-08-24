@@ -1,3 +1,6 @@
 [submodule "portal"]
 	path = portal
 	url = https://github.com/Zerohertz/server-portal
+[submodule "apps"]
+	path = apps
+	url = https://github.com/Zerohertz/k8s-private
