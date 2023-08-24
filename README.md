@@ -11,25 +11,25 @@
 </br>
 <div align="center">
 
-|No.|`.sh`|Stacks|Features|
-|:-:|:-:|-|-|
-|:zero:|[sh/install_k8s.sh](https://github.com/Zerohertz/k8s-on-premise/blob/master/sh/install_k8s.sh)|:o: [Kubelet](https://github.com/kubernetes/kubelet)</br>:o: [Kubeadm](https://github.com/kubernetes/kubeadm)</br>:o: [Kubectl](https://github.com/kubernetes/kubectl)</br>:o: [Flannel](https://github.com/flannel-io/flannel)|:white_check_mark: 단일 node로 실행하므로 [master node의 `taint` 변경](https://github.com/Zerohertz/k8s-on-premise/blob/master/sh/install_k8s.sh#L41)|
-|:one:|[1_init/run.sh](https://github.com/Zerohertz/k8s-on-premise/blob/master/1_init/run.sh)|:o: [Metrics Server](https://github.com/kubernetes-sigs/metrics-server)</br>:o: [Local Path Provisioner](https://github.com/rancher/local-path-provisioner)</br>:o: [MetalLB](https://github.com/metallb/metallb)</br>:o: [Traefik](https://github.com/traefik/traefik)|:white_check_mark: [thomseddon/traefik-forward-auth](https://github.com/thomseddon/traefik-forward-auth)를 통한 [Google OAuth](https://developers.google.com/identity/protocols/oauth2?hl=ko) Middleware|
-|:two:|[2_k8s-dashboard/run.sh](https://github.com/Zerohertz/k8s-on-premise/blob/master/2_k8s-dashboard/run.sh)|:o: [Kubernetes Dashboard](https://github.com/kubernetes/dashboard)|:white_check_mark: Token 없이 접속 가능 (:warning: 보안 유의! :warning:)|
-|:two:|[2_monitoring/run.sh](https://github.com/Zerohertz/k8s-on-premise/blob/master/2_monitoring/run.sh)|:o: [Prometheus](https://github.com/prometheus/prometheus)</br>:o: [Grafana](https://github.com/grafana/grafana)|:white_check_mark: [Node Exporter Full](https://grafana.com/grafana/dashboards/1860-node-exporter-full/), [Traefik Official Kubernetes Dashboard](https://grafana.com/grafana/dashboards/17347-traefik-official-kubernetes-dashboard/) 사용 가능|
-|:three:|[airflow/run.sh](https://github.com/Zerohertz/k8s-on-premise/blob/master/airflow/run.sh)|:o: [Apache Airflow](https://github.com/apache/airflow)|:white_check_mark: [Kubernetes Executor](https://airflow.apache.org/docs/apache-airflow/stable/core-concepts/executor/kubernetes.html) 사용|
-|:three:|[argo-cd/run.sh](https://github.com/Zerohertz/k8s-on-premise/blob/master/argo-cd/run.sh)|:o: [Argo CD](https://github.com/argoproj/argo-cd)||
-|:three:|[nextcloud/run.sh](https://github.com/Zerohertz/k8s-on-premise/blob/master/nextcloud/run.sh)|:o: [Nextcloud](https://github.com/nextcloud)||
-|:art:|-|:o: [@rldnd](https://github.com/rldnd)|:white_check_mark: 모든 서비스를 한번에 접속할 수 있는 portal 추가</br>:white_check_mark: [GitHub Actions 및 Argo CD 기반 CI/CD 적용](https://zerohertz.github.io/cicd-init/)|
+|No.|Stacks|Features|
+|:-:|-|-|
+|:zero:|:o: [Kubelet](https://github.com/kubernetes/kubelet)</br>:o: [Kubeadm](https://github.com/kubernetes/kubeadm)</br>:o: [Kubectl](https://github.com/kubernetes/kubectl)</br>:o: [Flannel](https://github.com/flannel-io/flannel)|:white_check_mark: 단일 node로 실행하므로 [master node의 `taint` 변경](https://github.com/Zerohertz/k8s-on-premise/blob/master/sh/install_k8s.sh#L41)|
+|:one:|:o: [Metrics Server](https://github.com/kubernetes-sigs/metrics-server)</br>:o: [Local Path Provisioner](https://github.com/rancher/local-path-provisioner)</br>:o: [MetalLB](https://github.com/metallb/metallb)</br>:o: [Traefik](https://github.com/traefik/traefik)|:white_check_mark: [thomseddon/traefik-forward-auth](https://github.com/thomseddon/traefik-forward-auth)를 통한 [Google OAuth](https://developers.google.com/identity/protocols/oauth2?hl=ko) Middleware|
+|:two:|:o: [Kubernetes Dashboard](https://github.com/kubernetes/dashboard)|:white_check_mark: Token 없이 접속 가능 (:warning: 보안 유의! :warning:)|
+|:two:|:o: [Prometheus](https://github.com/prometheus/prometheus)</br>:o: [Grafana](https://github.com/grafana/grafana)|:white_check_mark: [Node Exporter Full](https://grafana.com/grafana/dashboards/1860-node-exporter-full/), [Traefik Official Kubernetes Dashboard](https://grafana.com/grafana/dashboards/17347-traefik-official-kubernetes-dashboard/) 사용 가능|
+|:three:|:o: [Apache Airflow](https://github.com/apache/airflow)|:white_check_mark: [Kubernetes Executor](https://airflow.apache.org/docs/apache-airflow/stable/core-concepts/executor/kubernetes.html) 사용|
+|:three:|:o: [Argo CD](https://github.com/argoproj/argo-cd)||
+|:three:|:o: [Nextcloud](https://github.com/nextcloud)|:white_check_mark: Backend PostgreSQL 사용|
+|:art:|:o: [@rldnd](https://github.com/rldnd)|:white_check_mark: 모든 서비스를 한번에 접속할 수 있는 portal 추가</br>:white_check_mark: [GitHub Actions 및 Argo CD 기반 CI/CD 적용](https://zerohertz.github.io/cicd-init/)|
 
 </div>
 
-+ 모든 서비스는 `https://${SERVICE}.${DDNS}`에 배포됩니다.
-
++ 모든 서비스는 `https://${SERVICE}.${DDNS}`에 Argo CD로 배포됩니다.
 
 <div align="center">
-  <img width="2163" alt="portal" src="https://github-production-user-asset-6210df.s3.amazonaws.com/42334717/262010647-c873b57a-95cb-4a57-ac44-6116b8d3c265.png">
-  <img width="519" alt="traefik" src="https://github-production-user-asset-6210df.s3.amazonaws.com/42334717/262011380-51d6f3a0-6b2c-42c3-b72e-7d68b563314a.png">
+  <img width="1993" alt="argo-cd" src="https://github-production-user-asset-6210df.s3.amazonaws.com/42334717/262990994-bbc46c1e-09b4-457c-bda6-47f444780efb.png">
+  <img width="2207" alt="portal" src="https://github-production-user-asset-6210df.s3.amazonaws.com/42334717/262991891-83a56498-bd18-4c9f-9141-5034a0265ee0.png">
+  <img width="491" alt="traefik" src="https://github-production-user-asset-6210df.s3.amazonaws.com/42334717/262991416-cfd96c72-c459-4edf-a43c-2f8321dba802.png">
 </div>
 
 ---
