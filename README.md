@@ -28,8 +28,8 @@
 
 
 <div align="center">
-  <img width="2163" alt="portal" src="https://github-production-user-asset-6210df.s3.amazonaws.com/42334717/262010647-c873b57a-95cb-4a57-ac44-6116b8d3c265.png">
-  <img width="519" alt="traefik" src="https://github-production-user-asset-6210df.s3.amazonaws.com/42334717/262011380-51d6f3a0-6b2c-42c3-b72e-7d68b563314a.png">
+  <img width="2207" alt="portal" src="https://github-production-user-asset-6210df.s3.amazonaws.com/42334717/262991891-83a56498-bd18-4c9f-9141-5034a0265ee0.png">
+  <img width="491" alt="traefik" src="https://github-production-user-asset-6210df.s3.amazonaws.com/42334717/262991416-cfd96c72-c459-4edf-a43c-2f8321dba802.png">
 </div>
 
 ---
