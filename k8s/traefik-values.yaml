@@ -1,0 +1,23 @@
+ingressClass:
+  enabled: true
+  isDefaultClass: true
+additionalArguments:
+- "--certificatesresolvers.${RESOLVER}.acme.email=${EMAIL}"
+- "--certificatesresolvers.${RESOLVER}.acme.storage=/data/acme.json"
+- "--certificatesresolvers.${RESOLVER}.acme.tlschallenge=true"
+ports:
+  traefik:
+    expose: true
+    exposedPort: 9000
+    nodePort: 31025
+  web:
+    nodePort: 31023
+  websecure:
+    nodePort: 31024
+  metrics:
+    expose: true
+    exposedPort: 9100
+    nodePort: 31026
+ingressRoute:
+  dashboard:
+    enabled: false
