@@ -40,3 +40,16 @@
 + [sh/remove_k8s.sh](https://github.com/Zerohertz/k8s-on-premise/blob/master/sh/remove_k8s.sh): Kubernetes 삭제
 + [sh/install_k9s.sh](https://github.com/Zerohertz/k8s-on-premise/blob/master/sh/install_k9s.sh): [K9s](https://github.com/derailed/k9s) 설치
 + [sh/base64.sh](https://github.com/Zerohertz/k8s-on-premise/blob/master/sh/base64.sh): Kubernetes의 [Secret](https://kubernetes.io/ko/docs/concepts/configuration/secret/)을 사용하기 위한 base64 encoding
+
+> Visual Studio Code: `settings.json` (For Formatting)
+
+```yaml
+{
+    ...
+    "[yaml]": {
+        "editor.defaultFormatter": "redhat.vscode-yaml",
+        "editor.formatOnSave": true
+    },
+    "yaml.format.enable": true
+}
+```
