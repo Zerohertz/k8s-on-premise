@@ -6,4 +6,3 @@ configs:
     server.insecure: true
   secret:
     argocdServerAdminPassword: "${PASSWORD}"
-

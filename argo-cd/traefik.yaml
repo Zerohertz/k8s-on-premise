@@ -8,7 +8,7 @@ spec:
     address: http://forward-auth.oauth.svc.cluster.local:4181
     trustForwardHeader: true
     authResponseHeaders:
-    - X-Forwarded-User
+      - X-Forwarded-User
 ---
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
@@ -17,14 +17,14 @@ metadata:
   namespace: argo-cd
 spec:
   entryPoints:
-  - websecure
+    - websecure
   routes:
-  - match: Host(`argocd.${DDNS}`)
-    kind: Rule
-    middlewares:
-    - name: argo-cd-forward-auth-mw
-    services:
-    - name: argo-cd-argocd-server
-      port: 80
+    - match: Host(`argocd.${DDNS}`)
+      kind: Rule
+      middlewares:
+        - name: argo-cd-forward-auth-mw
+      services:
+        - name: argo-cd-argocd-server
+          port: 80
   tls:
     certResolver: ${RESOLVER}

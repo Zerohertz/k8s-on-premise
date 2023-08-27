@@ -2,9 +2,9 @@ ingressClass:
   enabled: true
   isDefaultClass: true
 additionalArguments:
-- "--certificatesresolvers.${RESOLVER}.acme.email=${EMAIL}"
-- "--certificatesresolvers.${RESOLVER}.acme.storage=/data/acme.json"
-- "--certificatesresolvers.${RESOLVER}.acme.tlschallenge=true"
+  - "--certificatesresolvers.${RESOLVER}.acme.email=${EMAIL}"
+  - "--certificatesresolvers.${RESOLVER}.acme.storage=/data/acme.json"
+  - "--certificatesresolvers.${RESOLVER}.acme.tlschallenge=true"
 ports:
   traefik:
     expose: true
