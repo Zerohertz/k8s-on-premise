@@ -16,7 +16,7 @@ spec:
   capacity:
     storage: 1Gi
   accessModes:
-  - ReadOnlyMany
+  - ReadWriteOnce
   hostPath:
     path: "/home/${PATH}/airflow/dags"
   persistentVolumeReclaimPolicy: Retain
@@ -30,7 +30,7 @@ metadata:
 spec:
   storageClassName: airflow-storage
   accessModes:
-  - ReadOnlyMany
+  - ReadWriteOnce
   resources:
     requests:
       storage: 1Gi
