@@ -13,7 +13,7 @@
 
 |No.|Stacks|Features|
 |:-:|-|-|
-|:zero:|:o: [Kubelet](https://github.com/kubernetes/kubelet)</br>:o: [Kubeadm](https://github.com/kubernetes/kubeadm)</br>:o: [Kubectl](https://github.com/kubernetes/kubectl)</br>:o: [Flannel](https://github.com/flannel-io/flannel)|:white_check_mark: 단일 node로 실행하므로 [master node의 `taint` 변경](https://github.com/Zerohertz/k8s-on-premise/blob/master/sh/install_k8s.sh#L41)|
+|:zero:|:o: [Kubelet](https://github.com/kubernetes/kubelet)</br>:o: [Kubeadm](https://github.com/kubernetes/kubeadm)</br>:o: [Kubectl](https://github.com/kubernetes/kubectl)</br>:o: [Flannel](https://github.com/flannel-io/flannel)|:white_check_mark: 단일 node로 실행하므로 [master node의 `taint` 변경](https://github.com/Zerohertz/k8s-on-premise/blob/4.Argo-CD/sh/install_k8s.sh#L41)|
 |:one:|:o: [Metrics Server](https://github.com/kubernetes-sigs/metrics-server)</br>:o: [Local Path Provisioner](https://github.com/rancher/local-path-provisioner)</br>:o: [MetalLB](https://github.com/metallb/metallb)</br>:o: [Traefik](https://github.com/traefik/traefik)|:white_check_mark: [thomseddon/traefik-forward-auth](https://github.com/thomseddon/traefik-forward-auth)를 통한 [Google OAuth](https://developers.google.com/identity/protocols/oauth2?hl=ko) Middleware|
 |:two:|:o: [Kubernetes Dashboard](https://github.com/kubernetes/dashboard)|:white_check_mark: Token 없이 접속 가능 (:warning: 보안 유의! :warning:)|
 |:two:|:o: [Prometheus](https://github.com/prometheus/prometheus)</br>:o: [Grafana](https://github.com/grafana/grafana)|:white_check_mark: [Node Exporter Full](https://grafana.com/grafana/dashboards/1860-node-exporter-full/), [Traefik Official Kubernetes Dashboard](https://grafana.com/grafana/dashboards/17347-traefik-official-kubernetes-dashboard/) 사용 가능|
@@ -36,10 +36,10 @@
 
 ## Etc.
 
-+ [sh/reset_k8s.sh](https://github.com/Zerohertz/k8s-on-premise/blob/master/sh/reset_k8s.sh): Kubernetes 재설정
-+ [sh/remove_k8s.sh](https://github.com/Zerohertz/k8s-on-premise/blob/master/sh/remove_k8s.sh): Kubernetes 삭제
-+ [sh/install_k9s.sh](https://github.com/Zerohertz/k8s-on-premise/blob/master/sh/install_k9s.sh): [K9s](https://github.com/derailed/k9s) 설치
-+ [sh/base64.sh](https://github.com/Zerohertz/k8s-on-premise/blob/master/sh/base64.sh): Kubernetes의 [Secret](https://kubernetes.io/ko/docs/concepts/configuration/secret/)을 사용하기 위한 base64 encoding
++ [sh/reset_k8s.sh](https://github.com/Zerohertz/k8s-on-premise/blob/4.Argo-CD/sh/reset_k8s.sh): Kubernetes 재설정
++ [sh/remove_k8s.sh](https://github.com/Zerohertz/k8s-on-premise/blob/4.Argo-CD/sh/remove_k8s.sh): Kubernetes 삭제
++ [sh/install_k9s.sh](https://github.com/Zerohertz/k8s-on-premise/blob/4.Argo-CD/sh/install_k9s.sh): [K9s](https://github.com/derailed/k9s) 설치
++ [sh/base64.sh](https://github.com/Zerohertz/k8s-on-premise/blob/4.Argo-CD/sh/base64.sh): Kubernetes의 [Secret](https://kubernetes.io/ko/docs/concepts/configuration/secret/)을 사용하기 위한 base64 encoding
 
 > Visual Studio Code: `settings.json` (For Formatting)
 
