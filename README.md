@@ -20,6 +20,7 @@
 |:three:|:o: [Apache Airflow](https://github.com/apache/airflow)|:white_check_mark: [Kubernetes Executor](https://airflow.apache.org/docs/apache-airflow/stable/core-concepts/executor/kubernetes.html) 사용|
 |:three:|:o: [Argo CD](https://github.com/argoproj/argo-cd)||
 |:three:|:o: [Nextcloud](https://github.com/nextcloud)|:white_check_mark: [Backend PostgreSQL 사용](https://zerohertz.github.io/home-server-cloud/#PostgreSQL)|
+|:three:|:o: [Jenkins](https://github.com/jenkinsci)|:white_check_mark: GitOps를 위해 OAuth :x:|
 |:art:|:o: [@rldnd](https://github.com/rldnd)|:white_check_mark: 모든 서비스를 한번에 접속할 수 있는 portal 추가</br>:white_check_mark: [GitHub Actions 및 Argo CD 기반 CI/CD 적용](https://zerohertz.github.io/cicd-init/)|
 
 </div>
@@ -27,9 +28,9 @@
 + 모든 서비스는 `https://${SERVICE}.${DDNS}`에 Argo CD로 배포됩니다.
 
 <div align="center">
-  <img width="1993" alt="argo-cd" src="https://github-production-user-asset-6210df.s3.amazonaws.com/42334717/262990994-bbc46c1e-09b4-457c-bda6-47f444780efb.png">
-  <img width="2207" alt="portal" src="https://github-production-user-asset-6210df.s3.amazonaws.com/42334717/262991891-83a56498-bd18-4c9f-9141-5034a0265ee0.png">
-  <img width="491" alt="traefik" src="https://github-production-user-asset-6210df.s3.amazonaws.com/42334717/262991416-cfd96c72-c459-4edf-a43c-2f8321dba802.png">
+  <img width="2515" alt="argo-cd" src="https://github-production-user-asset-6210df.s3.amazonaws.com/42334717/279639363-fb5ebd02-fafa-4c1b-8c66-4087537a869c.png">
+  <img width="2515" alt="portal" src="https://github-production-user-asset-6210df.s3.amazonaws.com/42334717/279639181-6d0a07c4-a99f-43f3-8632-236ecac7ced9.png">
+  <img width="2515" alt="traefik" src="https://github-production-user-asset-6210df.s3.amazonaws.com/42334717/279639616-92e61512-4a1e-458b-80ce-12a2720be0b0.png">
 </div>
 
 ---
