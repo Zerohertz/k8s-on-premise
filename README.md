@@ -20,7 +20,7 @@
 |:three:|:o: [Apache Airflow](https://github.com/apache/airflow)|:white_check_mark: [Kubernetes Executor](https://airflow.apache.org/docs/apache-airflow/stable/core-concepts/executor/kubernetes.html) 사용|
 |:three:|:o: [Argo CD](https://github.com/argoproj/argo-cd)||
 |:three:|:o: [Nextcloud](https://github.com/nextcloud)|:white_check_mark: [Backend PostgreSQL 사용](https://zerohertz.github.io/home-server-cloud/#PostgreSQL)|
-|:three:|:o: [Jenkins](https://github.com/jenkinsci)|:white_check_mark: GitOps를 위해 OAuth :x:|
+|:three:|:o: [Jenkins](https://github.com/jenkinsci)|:white_check_mark: GitOps를 위해 Jenkins Plugin을 통한 OAuth 사용|
 |:art:|:o: [@rldnd](https://github.com/rldnd)|:white_check_mark: 모든 서비스를 한번에 접속할 수 있는 portal 추가</br>:white_check_mark: [GitHub Actions 및 Argo CD 기반 CI/CD 적용](https://zerohertz.github.io/cicd-init/)|
 
 </div>
