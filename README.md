@@ -1,4 +1,4 @@
-<div align=center> <h1> :ship: Kubernetes: On-premise :ship: </h1> </div>
+<div align=center> <h1> 🚢 Kubernetes: On-premise 🚢 </h1> </div>
 
 > Kubernetes를 직접 구축해보고 서비스를 배포해보기 위한 코드들입니다.
 
