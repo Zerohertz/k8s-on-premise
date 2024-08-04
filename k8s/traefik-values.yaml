@@ -7,7 +7,8 @@ additionalArguments:
   - "--certificatesresolvers.${RESOLVER}.acme.tlschallenge=true"
 ports:
   traefik:
-    expose: true
+    expose:
+      default: true
     exposedPort: 9000
     nodePort: 31025
   web:
@@ -15,7 +16,8 @@ ports:
   websecure:
     nodePort: 31024
   metrics:
-    expose: true
+    expose:
+      default: true
     exposedPort: 9100
     nodePort: 31026
 ingressRoute:
