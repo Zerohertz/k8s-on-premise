@@ -5,6 +5,8 @@
 </br>
 <div align = "center">
     <a href = "https://zerohertz.xyz">
+        <img src="https://img.shields.io/badge/Kubernetes-v1.22.17-800A0A?style=for-the-badge&logo=Kubernetes&labelColor=326CE5&logoColor=white"/>
+        </br>
         <img src="https://img.shields.io/badge/Zerohertz's%20Server-800a0a?style=for-the-badge&logo=data.ai&logoColor=white"/>
     </a>
 </div>
