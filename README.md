@@ -2,6 +2,15 @@
 
 > Kubernetes를 직접 구축해보고 서비스를 배포해보기 위한 코드들입니다.
 
+</br>
+<div align = "center">
+    <img src="https://img.shields.io/badge/Kubernetes-v1.22.17-800A0A?style=for-the-badge&logo=Kubernetes&labelColor=326CE5&logoColor=white"/>
+    </br>
+    <a href = "https://zerohertz.xyz">
+        <img src="https://img.shields.io/badge/Zerohertz's%20Server-800a0a?style=for-the-badge&logo=data.ai&logoColor=white"/>
+    </a>
+</div>
+</br>
 <div align="center">
 
 |No.|`.sh`|Stacks|Features|
