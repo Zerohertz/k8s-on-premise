@@ -27,6 +27,123 @@
 | :three: | :o: [Nextcloud](https://github.com/nextcloud)                                                                                                                                                                                                                           | :white_check_mark: [Backend PostgreSQL 사용](https://zerohertz.github.io/home-server-cloud/#PostgreSQL)                                                                                                                                          |
 |  :art:  | :o: [@rldnd](https://github.com/rldnd)                                                                                                                                                                                                                                  | :white_check_mark: 모든 서비스를 한번에 접속할 수 있는 portal 추가</br>:white_check_mark: [GitHub Actions 및 Argo CD 기반 CI/CD 적용](https://zerohertz.github.io/cicd-init/)                                                                    |
 
+```mermaid
+%%{
+    init: {
+        'theme': 'default',
+        'themeVariables': {
+            'fontFamily': 'Times New Roman'
+        }
+    }
+}%%
+flowchart TD
+    user[User]
+    dns[Domain Namer Server: GoDaddy]
+    user--Domain request</br />(service.zerohertz.xyz)-->dns
+    dns--DNS routing<br />(XXX.XXX.XXX.XXX)-->router
+    router--Port forwarding-->ingress
+
+    github[GitHub]
+    click github "https://github.com/Zerohertz/k8s-on-premise" _blank
+    github--Webhook</br />(argocd.zerohertz.xyz)-->dns
+
+    router--Google 2FA-->fail2ban
+    fail2ban-->ssh
+
+    slack[Slack Bot]
+    airflow-kubernetes-pod-operator-->slack
+
+    subgraph Home
+        router["Router<br />(XXX.XXX.XXX.XXX)"]
+        subgraph 0hz-controlplane
+            fail2ban[Fail2Ban]
+            ssh[SSH]
+            node-exporter[Node Exporter]
+            node-exporter-->prometheus
+            subgraph Kubernetes
+                kube-apiserver[kube-apiserver]
+                kube-scheduler[kube-scheduler]
+                kube-controller-manager[kube-controller-manager]
+                kubelet[Kubelet]
+                ingress[Ingress: Traefik]
+                cni[CNI: Calico]
+
+                argo-cd-application-controller-->kube-apiserver
+                airflow-triggerer-->kube-apiserver
+                kube-apiserver-->kube-scheduler
+                kube-apiserver-->kube-controller-manager
+                kube-scheduler-->kubelet
+                kube-controller-manager-->kubelet
+
+                storage-class[Storage Class:<br/>Local Path Storage]
+
+                kubelet-.->Monitoring
+                kubelet-.->Airflow
+                kubelet-.->NextCloud
+                kubelet-.->airflow-kubernetes-pod-operator
+
+                ingress--Ingress-->argo-cd-server
+                ingress--Ingress-->prometheus
+                ingress--Ingress-->grafana
+                ingress--Ingress-->airflow-webserver
+                ingress--Ingress-->nextcloud
+
+                subgraph Argo-CD
+                    argo-cd-server[Server]
+                    argo-cd-dex-server[Dex Server]
+                    argo-cd-repo-server[Repo Server]
+                    argo-cd-application-controller[Application Controller]
+                    argo-cd-applicationset-controller[ApplicationSet Controller]
+                    argo-cd-notifications-controller[Notifications Controller]
+                    argo-cd-db[(Redis)]
+                    argo-cd-server-->argo-cd-dex-server
+                    argo-cd-server-->argo-cd-repo-server
+                    argo-cd-server--Sync Apps-->argo-cd-application-controller
+                    argo-cd-server-->argo-cd-applicationset-controller
+                    argo-cd-server-->argo-cd-notifications-controller
+                    argo-cd-repo-server-->argo-cd-db
+                    argo-cd-application-controller-->argo-cd-repo-server
+                    argo-cd-applicationset-controller-->argo-cd-repo-server
+                    argo-cd-notifications-controller--Monitors Events-->argo-cd-server
+                end
+
+                subgraph Monitoring
+                    prometheus[Prometheus]
+                    grafana[Grafana]
+                    prometheus-->grafana
+                end
+
+                subgraph Airflow
+                    airflow-webserver[Webserver]
+                    airflow-db[(PostgreSQL)]
+                    airflow-statsd[statsd]
+                    airflow-triggerer[triggerer]
+                    airflow-kubernetes-pod-operator[KubernetesPodOperator]
+                    airflow-webserver-->airflow-db
+                    airflow-webserver-->airflow-statsd
+                    airflow-webserver-->airflow-triggerer
+                end
+
+                subgraph NextCloud
+                    nextcloud[NextCloud]
+                    nextcloud-db[(PostgreSQL)]
+                    nextcloud-->nextcloud-db
+                end
+            end
+        end
+    end
+    style user fill:#800a0a,color:#fff,stroke:#000
+    style dns fill:#1BDBDB,stroke:#000
+    style github fill:#000,color:#fff,stroke:#000
+    style slack fill:#4A154B,color:#fff,stroke:#000
+    style 0hz-controlplane fill:#f0a0a0,stroke:#800a0a
+    style Kubernetes fill:#82ACF5,stroke:#326CE5
+    style Argo-CD fill:#EF7B4D,stroke:#EF7B4D
+    style Monitoring fill:#F6A26C,stroke:#E6522C
+    style Airflow fill:#71BCFE,stroke:#017CEE
+    style NextCloud fill:#30A2F9,stroke:#0082C9
+```
+
 </div>
 
 - 모든 서비스는 `https://${SERVICE}.${DDNS}`에 Argo CD로 배포됩니다.
